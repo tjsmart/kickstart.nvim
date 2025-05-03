@@ -14,7 +14,7 @@
 ========         |'-..................-'|   |____o|          ========
 ========         `"")----------------(""`   ___________      ========
 ========        /::::::::::|  |::::::::::\  \ no mouse \     ========
-========       /:::========|  |==hjkl==:::\  \ required \    ========
+========       /:::========|  |==hjkl==:::\  \  allowed \    ========
 ========      '""""""""""""'  '""""""""""""'  '""""""""""'   ========
 ========                                                     ========
 =====================================================================
@@ -36,7 +36,3 @@ require 'options'
 require 'keymaps'
 require 'autocommands'
 require 'lazy-init'
-
--- TODO: Find a home and/or a better way to do this (needs to be done after color), vim.schedule?
-vim.cmd 'highlight CursorLine ctermbg=NONE guibg=#1f081f'
-vim.cmd 'highlight Visual ctermbg=NONE guibg=#12123f'

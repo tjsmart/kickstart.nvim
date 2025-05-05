@@ -10,22 +10,14 @@ return {
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
-  -- Adds git related signs to the gutter, as well as utilities for managing changes
   {
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      local gitsigns = require 'gitsigns'
-      gitsigns.setup()
+    'jiaoshijie/undotree',
+    dependencies = { 'nvim-lua/plenary.nvim' },
 
-      vim.keymap.set('n', '<leader>hs', gitsigns.preview_hunk)
-      vim.keymap.set('n', '<leader>hp', function()
-        gitsigns.nav_hunk 'prev'
-      end)
-      vim.keymap.set('n', '<leader>hn', function()
-        gitsigns.nav_hunk 'next'
-      end)
-      -- vim.keymap.set('n', '<leader>hn', '<cmd>Gitsigns next_hunk<cr>')
-      -- vim.keymap.set('n', '<leader>ha', '<cmd>Gitsigns diffthis<cr>')
+    config = function()
+      local undotree = require 'undotree'
+      undotree.setup()
+      vim.keymap.set('n', '<leader>u', undotree.toggle)
     end,
   },
 }

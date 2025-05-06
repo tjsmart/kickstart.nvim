@@ -10,7 +10,9 @@
 return {
   'nvim-telescope/telescope.nvim',
   event = 'VimEnter',
-  branch = '0.1.x',
+  -- TODO: change to stable release, using master for now because of
+  --       https://github.com/nvim-telescope/telescope.nvim/issues/3439
+  branch = 'master',
   dependencies = {
     'nvim-lua/plenary.nvim',
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },

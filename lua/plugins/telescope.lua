@@ -30,7 +30,7 @@ return {
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
-    local picker_opts = require('telescope.themes').get_ivy { hidden = true }
+    local picker_opts = require('telescope.themes').get_ivy { hidden = false }
     vim.keymap.set('n', '<C-f>', function()
       builtin.live_grep(picker_opts)
     end, { desc = 'Find text' })

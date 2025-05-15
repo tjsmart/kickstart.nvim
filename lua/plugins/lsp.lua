@@ -95,6 +95,7 @@ return {
         },
         lua_ls = {},
         pyright = {},
+        gopls = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -138,6 +139,7 @@ return {
       },
       formatters_by_ft = {
         lua = { 'stylua' },
+        go = { 'gofmt' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --

@@ -7,6 +7,8 @@
 
 -- Reload
 vim.keymap.set('n', '<leader><leader>r', '<cmd>LspRestart<cr><cmd>edit!<cr>')
+-- Edit config
+vim.keymap.set('n', '<leader><leader>e', '<cmd>e ~/.config/nvim/init.lua<cr>')
 
 -- NOTE: window keymaps
 --  See `:help wincmd` for a list of all window commands

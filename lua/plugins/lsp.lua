@@ -35,7 +35,7 @@ return {
           map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
           map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
           map('gi', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-          map('gt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype')
+          map('gD', require('telescope.builtin').lsp_type_definitions, '[G]oto type [D]efinition')
 
           map('<leader>dl', require('telescope.builtin').diagnostics, '[D]iagonistics [L]ist')
           map('<leader>ds', vim.diagnostic.open_float, '[D]iagnostic [S]how')
@@ -96,6 +96,8 @@ return {
         lua_ls = {},
         pyright = {},
         gopls = {},
+        ts_ls = {},
+        svelte = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -228,7 +230,20 @@ return {
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'svelte',
+        'vim',
+        'vimdoc',
+      },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {

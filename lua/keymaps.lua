@@ -8,7 +8,10 @@
 -- Reload
 vim.keymap.set('n', '<leader><leader>r', '<cmd>LspRestart<cr><cmd>edit!<cr>')
 -- Edit config
-vim.keymap.set('n', '<leader><leader>e', '<cmd>e ~/.config/nvim/init.lua<cr>')
+vim.keymap.set('n', '<leader><leader>e', function()
+  local initfile = vim.fn.stdpath 'config' .. '/init.lua'
+  vim.cmd('e ' .. initfile)
+end)
 
 -- NOTE: window keymaps
 --  See `:help wincmd` for a list of all window commands
@@ -35,3 +38,14 @@ vim.keymap.set('t', '<C-Down>', '<C-\\><C-n><C-w>-', { desc = 'Descrease termina
 vim.keymap.set('t', '<C-Up>', '<C-\\><C-n><C-w>+', { desc = 'Increase terminal window height' })
 vim.keymap.set('t', '<C-Left>', '<C-\\><C-n><C-w><', { desc = 'Decrease terminal window width' })
 vim.keymap.set('t', '<C-Right>', '<C-\\><C-n><C-w>>', { desc = 'Increase terminal window width' })
+
+vim.keymap.set('n', '<leader><leader>c', function()
+  local cb = vim.opt.clipboard:get()
+  if vim.tbl_contains(cb, 'unnamedplus') then
+    vim.opt.clipboard = {}
+    print '📋 Clipboard sync: OFF'
+  else
+    vim.opt.clipboard = { 'unnamedplus' }
+    print '📋 Clipboard sync: ON'
+  end
+end, { desc = 'Toggle system clipboard' })

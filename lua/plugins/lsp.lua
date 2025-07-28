@@ -39,6 +39,9 @@ return {
 
           map('<leader>dl', require('telescope.builtin').diagnostics, '[D]iagonistics [L]ist')
           map('<leader>ds', vim.diagnostic.open_float, '[D]iagnostic [S]how')
+          map('<leader>dq', vim.diagnostic.setloclist, '[D]iagnostic [Q]uickfix')
+          map('<leader>dn', vim.diagnostic.goto_next, '[D]iagnostic [N]ext')
+          map('<leader>dp', vim.diagnostic.goto_prev, '[D]iagnostic [P]revious')
 
           map('<leader>fs', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[F]ind [S]ymbols')
           map('<leader>R', vim.lsp.buf.rename, '[R]ename')
@@ -240,6 +243,7 @@ return {
         'markdown',
         'markdown_inline',
         'query',
+        'python',
         'svelte',
         'vim',
         'vimdoc',

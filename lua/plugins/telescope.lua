@@ -43,12 +43,33 @@ return {
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Find in help' })
     vim.keymap.set('n', '<leader>fa', builtin.builtin, { desc = 'Find all builtins' })
     vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = 'Find current word' })
-    vim.keymap.set(
-      'n',
-      '<leader>fp',
-      '<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files,/home/tsmart/work/npsg-internal-tools<CR>',
-      { desc = 'Find file in all projects' }
-    )
+    -- search virtual environment
+    vim.keymap.set('n', '<leader>fvf', function()
+      local virtual_env = os.getenv 'VIRTUAL_ENV'
+      if virtual_env then
+        require('telescope.builtin').find_files {
+          hidden = true,
+          search_dirs = { virtual_env },
+          find_command = { 'rg', '--no-ignore', '--hidden', '--files' },
+        }
+      else
+        print 'No virtual environment found'
+      end
+    end)
+    vim.keymap.set('n', '<leader>fvw', function()
+      local virtual_env = os.getenv 'VIRTUAL_ENV'
+      if virtual_env then
+        require('telescope.builtin').live_grep {
+          hidden = true,
+          search_dirs = { virtual_env },
+          additional_args = function()
+            return { '--no-ignore' }
+          end,
+        }
+      else
+        print 'No virtual environment found'
+      end
+    end)
     vim.keymap.set('n', '<leader>fn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = 'Find file in nvim config' })
